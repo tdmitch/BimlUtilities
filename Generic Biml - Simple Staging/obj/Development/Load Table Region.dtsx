@@ -1,0 +1,325 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/25/2019 9:33:56 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SQL2017DEMO"
+  DTS:CreatorName="Tim"
+  DTS:DTSID="{CDF0B61E-0CEF-464A-9B90-80203AE17089}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Load Table Region"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{F84FE851-85F2-4207-8F37-B1948F8D8BB6}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Load Region"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{C8529A03-8FC0-42C1-B1AC-3EA192DCF8F3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Load Region"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Load Region\OLEDST - Region"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="OLEDST - Region"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Region]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load Region\OLEDST - Region.Connections[OleDbConnection]"
+                  connectionManagerID="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[NorthwindStaging_OLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load Region\OLEDST - Region.Inputs[OLESRC - Region_Output_OLEDST - Region]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLESRC - Region_Output_OLEDST - Region">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load Region\OLEDST - Region.Inputs[OLESRC - Region_Output_OLEDST - Region].Columns[RegionID]"
+                      cachedDataType="i4"
+                      cachedName="RegionID"
+                      externalMetadataColumnId="Package\DFT - Load Region\OLEDST - Region.Inputs[OLESRC - Region_Output_OLEDST - Region].ExternalColumns[RegionID]"
+                      lineageId="Package\DFT - Load Region\OLESRC - Region.Outputs[Output].Columns[RegionID]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Region\OLEDST - Region.Inputs[OLESRC - Region_Output_OLEDST - Region].Columns[RegionDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="RegionDescription"
+                      externalMetadataColumnId="Package\DFT - Load Region\OLEDST - Region.Inputs[OLESRC - Region_Output_OLEDST - Region].ExternalColumns[RegionDescription]"
+                      lineageId="Package\DFT - Load Region\OLESRC - Region.Outputs[Output].Columns[RegionDescription]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Region\OLEDST - Region.Inputs[OLESRC - Region_Output_OLEDST - Region].ExternalColumns[RegionID]"
+                      dataType="i4"
+                      name="RegionID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Region\OLEDST - Region.Inputs[OLESRC - Region_Output_OLEDST - Region].ExternalColumns[RegionDescription]"
+                      dataType="wstr"
+                      length="50"
+                      name="RegionDescription" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load Region\OLEDST - Region.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\DFT - Load Region\OLEDST - Region.Inputs[OLESRC - Region_Output_OLEDST - Region]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Region\OLEDST - Region.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Region\OLEDST - Region.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load Region\OLEDST - Region.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Region\OLEDST - Region.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load Region\OLESRC - Region"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="OLESRC - Region"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [RegionID]
+,[RegionDescription]
+FROM [dbo].[Region]
+</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load Region\OLESRC - Region.Connections[OleDbConnection]"
+                  connectionManagerID="{11940E74-AEC7-11B1-7C97-C83A268A201E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Northwind_OLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load Region\OLESRC - Region.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Region\OLESRC - Region.Outputs[Output].Columns[RegionID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Region\OLESRC - Region.Outputs[Output].ExternalColumns[RegionID]"
+                      lineageId="Package\DFT - Load Region\OLESRC - Region.Outputs[Output].Columns[RegionID]"
+                      name="RegionID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Region\OLESRC - Region.Outputs[Output].Columns[RegionDescription]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Region\OLESRC - Region.Outputs[Output].ExternalColumns[RegionDescription]"
+                      length="50"
+                      lineageId="Package\DFT - Load Region\OLESRC - Region.Outputs[Output].Columns[RegionDescription]"
+                      name="RegionDescription"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Region\OLESRC - Region.Outputs[Output].ExternalColumns[RegionID]"
+                      dataType="i4"
+                      name="RegionID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Region\OLESRC - Region.Outputs[Output].ExternalColumns[RegionDescription]"
+                      dataType="wstr"
+                      length="50"
+                      name="RegionDescription" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Load Region\OLESRC - Region.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Region\OLESRC - Region.Outputs[Error].Columns[RegionID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Region\OLESRC - Region.Outputs[Error].Columns[RegionID]"
+                      name="RegionID" />
+                    <outputColumn
+                      refId="Package\DFT - Load Region\OLESRC - Region.Outputs[Error].Columns[RegionDescription]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT - Load Region\OLESRC - Region.Outputs[Error].Columns[RegionDescription]"
+                      name="RegionDescription" />
+                    <outputColumn
+                      refId="Package\DFT - Load Region\OLESRC - Region.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Region\OLESRC - Region.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load Region\OLESRC - Region.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Region\OLESRC - Region.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Load Region.Paths[OLESRC - Region_Output_OLEDST - Region]"
+              endId="Package\DFT - Load Region\OLEDST - Region.Inputs[OLESRC - Region_Output_OLEDST - Region]"
+              name="OLESRC - Region_Output_OLEDST - Region"
+              startId="Package\DFT - Load Region\OLESRC - Region.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate Region"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{87BADA5A-ACB0-4911-A594-958D0170022D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate Region"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[Region]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Truncate Region_To_DFT - Load Region]"
+      DTS:CreationName=""
+      DTS:DTSID="{7F074450-C1A0-4B07-82C1-D97F4D7F5195}"
+      DTS:From="Package\SQL - Truncate Region"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Truncate Region_To_DFT - Load Region"
+      DTS:To="Package\DFT - Load Region" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

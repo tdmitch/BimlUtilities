@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts" DTS:ObjectName="NorthwindStaging_OLEDB" DTS:DTSID="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}" DTS:refId="NorthwindStaging_OLEDB" DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts" DTS:ConnectionString="data source=(local);initial catalog=NorthwindStaging;provider=SQLNCLI11;integrated security=SSPI"></DTS:ConnectionManager>
+  </DTS:ObjectData>
+  <DTS:PropertyExpression DTS:Name="ConnectionString">@[$Project::pp_NorthwindStaging_OLEDB_ConnectionString]</DTS:PropertyExpression>
+</DTS:ConnectionManager>

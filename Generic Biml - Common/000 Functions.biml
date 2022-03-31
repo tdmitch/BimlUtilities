@@ -1,0 +1,172 @@
+﻿<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Threading.Tasks" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Collections" #>
+<#+
+    public static DataTable AnalyzeFile(string filename, string delimiter, bool hasColHeaders, int stringMinDefaultLength = 20, double stringLengthPaddingPercent = 1.0)
+        {
+            // Define the data table that will capture our results
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Name");
+            dt.Columns.Add("IsDecimal");
+            dt.Columns.Add("IsInteger");
+            dt.Columns.Add("IsDate");
+            dt.Columns.Add("MaxLength");
+            dt.Columns.Add("MaxScale");
+            dt.Columns.Add("NoBlanks");
+            dt.Columns.Add("InferredDataType");
+            dt.Columns.Add("LastCol");
+    
+            StreamReader fileReader = new StreamReader(filename);
+    
+            int lineNumber = 0;
+    
+            while (!fileReader.EndOfStream)
+            {
+                string thisLine = fileReader.ReadLine();
+    
+                string[] cols = thisLine.Split(delimiter.ToCharArray());
+    
+                // Fill in any missing columns
+                if (cols.Length > dt.Rows.Count)
+                {
+                    for (int j = dt.Rows.Count; j < cols.Length; j++)
+                    {
+                        string colName = (hasColHeaders && lineNumber == 0) ? cols[j] : "Column" + (j + 1).ToString();
+    
+                        DataRow row = dt.NewRow();
+                        row["Name"] = colName;
+                        row["MaxLength"] = 0;
+                        row["MaxScale"] = 0;
+                        row["IsDate"] = "0";
+                        row["IsDecimal"] = "0";
+                        row["IsInteger"] = "0";
+                        row["NoBlanks"] = "0";
+                        row["LastCol"] = "0";
+                        dt.Rows.Add(row);
+                    }
+                }
+    
+                if ((!hasColHeaders) || lineNumber > 0)
+                {
+                    for (int i = 0; i < cols.Length; i++)
+                    {
+                        string colValue = cols[i];
+    
+                        // If current column is longer than previous max length, update it
+                        if (colValue.Length > int.Parse(dt.Rows[i]["MaxLength"].ToString()))
+                            dt.Rows[i]["MaxLength"] = colValue.Length;
+    
+    
+                        // Check for blanks
+                        if (dt.Rows[i]["NoBlanks"].ToString() == "0" && colValue.Length == 0)
+                            dt.Rows[i]["NoBlanks"] = "1";
+    
+    
+                        // Is it a decimal?
+                        string isDecimal = dt.Rows[i]["IsDecimal"].ToString();
+                        if (isDecimal != "-1")
+                        {
+                            decimal dTest;
+                            bool dParse = decimal.TryParse(colValue, out dTest);
+    
+                            if (dParse && colValue.Contains("."))
+                            {
+                                // Set decimal flag
+                                dt.Rows[i]["IsDecimal"] = "1";
+    
+                                int precision = colValue.Substring(colValue.IndexOf('.')).Length - 1;
+                                if (precision > int.Parse(dt.Rows[i]["MaxScale"].ToString()))
+                                    dt.Rows[i]["MaxScale"] = precision;
+                            }
+                            else if (colValue.Trim().Length > 0 && (!dParse))
+                            {
+                                dt.Rows[i]["IsDecimal"] = "-1";
+                                dt.Rows[i]["MaxScale"] = 0;
+                            }
+                        }
+    
+    
+                        // Is it an integer?
+                        string isInteger = dt.Rows[i]["IsInteger"].ToString();
+                        if (isInteger != "-1")
+                        {
+                            int intTest;
+                            bool intParse = int.TryParse(colValue, out intTest);
+    
+                            if (intParse)
+                                dt.Rows[i]["IsInteger"] = "1";
+                            else if (colValue.Trim().Length > 0 && (!intParse))
+                                dt.Rows[i]["IsInteger"] = "-1";
+                        }
+    
+    
+                        // Is it a date?
+                        string isDate = dt.Rows[i]["IsDate"].ToString();
+                        if (isDate != "-1")
+                        {
+                            DateTime dtTest;
+                            bool dtParse = DateTime.TryParse(colValue, out dtTest);
+    
+                            if (dtParse)
+                                dt.Rows[i]["IsDate"] = "1";
+                            else if (colValue.Trim().Length > 0 && (!dtParse))
+                                dt.Rows[i]["IsDate"] = "-1";
+                        }
+    
+    
+    
+                        // Business logic to define order of precedence for data types
+                        if (dt.Rows[i]["IsDate"].ToString() == "1")
+                            dt.Rows[i]["InferredDataType"] = "DateTime";
+                        else if (dt.Rows[i]["IsDecimal"].ToString() == "1")
+                            dt.Rows[i]["InferredDataType"] = "Decimal";
+                        else if (dt.Rows[i]["IsInteger"].ToString() == "1")
+                            dt.Rows[i]["InferredDataType"] = "Int32";
+                        else
+                            dt.Rows[i]["InferredDataType"] = "AnsiString";
+                    }
+                }
+                lineNumber++;
+            }
+    
+            // Mark the last column
+            dt.Rows[dt.Rows.Count - 1]["LastCol"] = "1";
+    
+    
+            // Set string min lengths and padding
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if ((!(dt.Rows[i]["IsDate"].ToString() == "1" || dt.Rows[i]["IsInteger"] == "1" || dt.Rows[i]["IsDecimal"] == "1") // Is a string
+                    && dt.Rows[i]["MaxLength"] != "-1"))    // not MAX length
+                {
+                    if (int.Parse(dt.Rows[i]["MaxLength"].ToString()) < stringMinDefaultLength)
+                    {
+                        dt.Rows[i]["MaxLength"] = stringMinDefaultLength.ToString();
+                    }
+    
+                    if (stringLengthPaddingPercent > 0)
+                    {
+                        dt.Rows[i]["MaxLength"] = int.Parse(dt.Rows[i]["MaxLength"].ToString()) * stringLengthPaddingPercent;
+                    }
+                }
+            }
+            
+            return dt;
+        }
+#>    
+<#+ 
+    public static string ReplaceLiteralNullWithNull(string colName, string dataType, string len, string codePage = null)
+    {
+        string ssisDataType = (dataType.ToLower() == "string") ? "DT_WSTR, " + len : "DT_STR, " + len + ", " + codePage;
+
+        string sOut = "";
+        sOut += "(LOWER(TRIM([" + colName + "])) == \"null\") ? ";
+        sOut += "(" + ssisDataType + ")NULL(" + ssisDataType + ") ";
+        sOut += ": [" + colName + "]";
+
+        return sOut;
+    }
+#>

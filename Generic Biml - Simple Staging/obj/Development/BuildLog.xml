@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectInfo>
+    <Name>Generic Biml - Simple Staging</Name>
+    <LastWriteTime>2019-10-25T14:37:11.9427093Z</LastWriteTime>
+    <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+  </ProjectInfo>
+  <LastBuildInfos>
+    <ProjectBuildItemInfo>
+      <Name>_Drop and Create Tables.dtsx</Name>
+      <LastWriteTime>2019-10-25T14:33:51.6927997Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Load Table Categories.dtsx</Name>
+      <LastWriteTime>2019-10-25T14:33:58.736757Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Load Table CustomerCustomerDemo.dtsx</Name>
+      <LastWriteTime>2019-10-25T14:33:58.7378697Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Load Table CustomerDemographics.dtsx</Name>
+      <LastWriteTime>2019-10-25T14:33:58.7387206Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Load Table Customers.dtsx</Name>
+      <LastWriteTime>2019-10-25T14:33:58.7397531Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Load Table Employees.dtsx</Name>
+      <LastWriteTime>2019-10-25T14:33:58.7421675Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Load Table EmployeeTerritories.dtsx</Name>
+      <LastWriteTime>2019-10-25T14:33:58.7427639Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Load Table Order Details.dtsx</Name>
+      <LastWriteTime>2019-10-25T14:33:58.7438027Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Load Table Orders.dtsx</Name>
+      <LastWriteTime>2019-10-25T14:33:58.7457602Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Load Table Products.dtsx</Name>
+      <LastWriteTime>2019-10-25T14:33:58.7466946Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Load Table Region.dtsx</Name>
+      <LastWriteTime>2019-10-25T14:33:58.7477525Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Load Table Shippers.dtsx</Name>
+      <LastWriteTime>2019-10-25T14:33:58.7487809Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Load Table Suppliers.dtsx</Name>
+      <LastWriteTime>2019-10-25T14:33:58.7507807Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Load Table Territories.dtsx</Name>
+      <LastWriteTime>2019-10-25T14:33:58.7517818Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>_Controller - Load Table.dtsx</Name>
+      <LastWriteTime>2019-10-25T14:33:58.7527242Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+  </LastBuildInfos>
+</BuildLog>

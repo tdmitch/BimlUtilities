@@ -1,0 +1,38 @@
+<#@ include file="..\Generic Biml - Common\050 Common Config.biml" #>
+<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+    
+    <FileFormats>
+        <# foreach(var table in RootNode.Tables) {#>
+        <FlatFileFormat Name="FF_FMT <#= table.Name #>">
+            <Columns>
+                <# foreach (var column in table.Columns) { #>
+                <Column Name="<#= column.Name #>" DataType="<#= column.DataType #>" Delimiter=","></Column>
+                <# } #>
+            </Columns>
+        </FlatFileFormat>
+         <# } #>
+    </FileFormats>
+    
+    
+    <Connections>
+        <# foreach(var table in RootNode.Tables) {#>
+        <FlatFileConnection Name="FFCONN - <#= table.Name #>" FileFormat="FF_FMT <#= table.Name #>" FilePath="<#= table.Annotations["FilePath"] #>"></FlatFileConnection>
+         <# } #>
+    </Connections>
+    
+    <Packages>
+        <# foreach(var table in RootNode.Tables) {#>
+        <Package Name="<#= table.Name #>">
+            <Tasks>
+                <Dataflow Name="DFT - <#= table.Name #>">
+                    <Transformations>
+                        <FlatFileSource Name="FFSRC - <#= table.Name #>" ConnectionName="FFCONN - <#= table.Name #>"></FlatFileSource>
+                    </Transformations>
+                </Dataflow>
+            </Tasks>
+        </Package>
+        
+        <# } #>
+    </Packages>
+    
+</Biml>

@@ -1,0 +1,40 @@
+﻿<#@ include file="010 Simple Staging Config.biml" #>
+<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+    <Connections>
+        <OleDbConnection Name="<#= destConnectionName #>" ConnectionString="<#= destConnectionString #>" CreateInProject="true"></OleDbConnection>
+    </Connections>
+    <Projects>
+        <!-- <#= metadataSrcConnectionString #> -->
+        <PackageProject Name="<#= projectName #>">
+            <Parameters>
+                <Parameter Name="<#= destConnectionStringParamName #>" DataType="String"><#= destConnectionString #></Parameter>
+            </Parameters>
+            <Connections>
+                <Connection ConnectionName="<#= destConnectionName #>" Id="<#= GetConnectionID(destConnectionName) #>">
+                    <Expressions>
+                        <Expression ExternalProperty="ConnectionString">@[$Project::<#= destConnectionStringParamName #>]</Expression>
+                    </Expressions>
+                </Connection>
+            </Connections>
+            <Packages>
+                <Package PackageName="<#= createTablesPackageName #>" />
+            </Packages>
+        </PackageProject>
+    </Projects>
+    <Packages>
+        <Package Name="<#= createTablesPackageName #>" ConstraintMode="Linear" ProtectionLevel="DontSaveSensitive">
+            <Tasks>
+                 <# 
+                    foreach (var table in theMetadata.TableNodes) { 
+                        // Substitute the target table and schema names to create the correct SQL create table statement
+                        table.Schema.Name = table.GetTag("TargetSchemaName");
+                        table.Name = table.GetTag("TargetTableName");
+                 #>
+                 <ExecuteSQL Name="<#= sqlTaskPrefix #><#= createTablePackagePrefix #><#= table.Name#>" ConnectionName="<#= destConnectionName #>">
+                    <DirectInput><#= table.GetTableSql().Trim() #></DirectInput>
+                </ExecuteSQL>
+                <# } #>
+            </Tasks>
+        </Package>
+    </Packages>
+</Biml>

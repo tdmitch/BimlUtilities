@@ -1,0 +1,359 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/25/2019 9:33:56 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SQL2017DEMO"
+  DTS:CreatorName="Tim"
+  DTS:DTSID="{BC299613-C1B2-4777-820B-F881D0F3A5FF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Load Table Territories"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{EF974AF6-79A7-4F08-AEF4-A829C696E4FD}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Load Territories"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{72BA2175-E43F-46B2-AD0A-8A74D38C12A3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Load Territories"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Load Territories\OLEDST - Territories"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="OLEDST - Territories"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Territories]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load Territories\OLEDST - Territories.Connections[OleDbConnection]"
+                  connectionManagerID="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[NorthwindStaging_OLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load Territories\OLEDST - Territories.Inputs[OLESRC - Territories_Output_OLEDST - Territories]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLESRC - Territories_Output_OLEDST - Territories">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load Territories\OLEDST - Territories.Inputs[OLESRC - Territories_Output_OLEDST - Territories].Columns[TerritoryID]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="TerritoryID"
+                      externalMetadataColumnId="Package\DFT - Load Territories\OLEDST - Territories.Inputs[OLESRC - Territories_Output_OLEDST - Territories].ExternalColumns[TerritoryID]"
+                      lineageId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Output].Columns[TerritoryID]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Territories\OLEDST - Territories.Inputs[OLESRC - Territories_Output_OLEDST - Territories].Columns[TerritoryDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TerritoryDescription"
+                      externalMetadataColumnId="Package\DFT - Load Territories\OLEDST - Territories.Inputs[OLESRC - Territories_Output_OLEDST - Territories].ExternalColumns[TerritoryDescription]"
+                      lineageId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Output].Columns[TerritoryDescription]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Territories\OLEDST - Territories.Inputs[OLESRC - Territories_Output_OLEDST - Territories].Columns[RegionID]"
+                      cachedDataType="i4"
+                      cachedName="RegionID"
+                      externalMetadataColumnId="Package\DFT - Load Territories\OLEDST - Territories.Inputs[OLESRC - Territories_Output_OLEDST - Territories].ExternalColumns[RegionID]"
+                      lineageId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Output].Columns[RegionID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Territories\OLEDST - Territories.Inputs[OLESRC - Territories_Output_OLEDST - Territories].ExternalColumns[TerritoryID]"
+                      dataType="wstr"
+                      length="20"
+                      name="TerritoryID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Territories\OLEDST - Territories.Inputs[OLESRC - Territories_Output_OLEDST - Territories].ExternalColumns[TerritoryDescription]"
+                      dataType="wstr"
+                      length="50"
+                      name="TerritoryDescription" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Territories\OLEDST - Territories.Inputs[OLESRC - Territories_Output_OLEDST - Territories].ExternalColumns[RegionID]"
+                      dataType="i4"
+                      name="RegionID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load Territories\OLEDST - Territories.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\DFT - Load Territories\OLEDST - Territories.Inputs[OLESRC - Territories_Output_OLEDST - Territories]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Territories\OLEDST - Territories.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Territories\OLEDST - Territories.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load Territories\OLEDST - Territories.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Territories\OLEDST - Territories.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load Territories\OLESRC - Territories"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="OLESRC - Territories"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [TerritoryID]
+,[TerritoryDescription]
+,[RegionID]
+FROM [dbo].[Territories]
+</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load Territories\OLESRC - Territories.Connections[OleDbConnection]"
+                  connectionManagerID="{11940E74-AEC7-11B1-7C97-C83A268A201E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Northwind_OLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Output].Columns[TerritoryID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Output].ExternalColumns[TerritoryID]"
+                      length="20"
+                      lineageId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Output].Columns[TerritoryID]"
+                      name="TerritoryID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Output].Columns[TerritoryDescription]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Output].ExternalColumns[TerritoryDescription]"
+                      length="50"
+                      lineageId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Output].Columns[TerritoryDescription]"
+                      name="TerritoryDescription"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Output].Columns[RegionID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Output].ExternalColumns[RegionID]"
+                      lineageId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Output].Columns[RegionID]"
+                      name="RegionID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Output].ExternalColumns[TerritoryID]"
+                      dataType="wstr"
+                      length="20"
+                      name="TerritoryID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Output].ExternalColumns[TerritoryDescription]"
+                      dataType="wstr"
+                      length="50"
+                      name="TerritoryDescription" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Output].ExternalColumns[RegionID]"
+                      dataType="i4"
+                      name="RegionID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Error].Columns[TerritoryID]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Error].Columns[TerritoryID]"
+                      name="TerritoryID" />
+                    <outputColumn
+                      refId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Error].Columns[TerritoryDescription]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Error].Columns[TerritoryDescription]"
+                      name="TerritoryDescription" />
+                    <outputColumn
+                      refId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Error].Columns[RegionID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Error].Columns[RegionID]"
+                      name="RegionID" />
+                    <outputColumn
+                      refId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Load Territories.Paths[OLESRC - Territories_Output_OLEDST - Territories]"
+              endId="Package\DFT - Load Territories\OLEDST - Territories.Inputs[OLESRC - Territories_Output_OLEDST - Territories]"
+              name="OLESRC - Territories_Output_OLEDST - Territories"
+              startId="Package\DFT - Load Territories\OLESRC - Territories.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate Territories"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{DA6BD2A6-8828-466B-A657-9AB3EE7E35BA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate Territories"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[Territories]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Truncate Territories_To_DFT - Load Territories]"
+      DTS:CreationName=""
+      DTS:DTSID="{A50D68C3-6338-4985-86EC-3208FF38E7BE}"
+      DTS:From="Package\SQL - Truncate Territories"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Truncate Territories_To_DFT - Load Territories"
+      DTS:To="Package\DFT - Load Territories" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

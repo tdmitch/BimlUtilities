@@ -1,0 +1,65 @@
+﻿<#@ include file="010 Simple Staging Config.biml" #>
+<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+    <Connections>
+        <OleDbConnection Name="<#= sourceConnectionName #>" ConnectionString="<#= sourceConnectionString #>" CreateInProject="true"></OleDbConnection>
+        <OleDbConnection Name="<#= destConnectionName #>" ConnectionString="<#= destConnectionString #>" CreateInProject="true"></OleDbConnection>
+    </Connections>
+    <Projects>
+        <PackageProject Name="<#= projectName #>">
+            <Parameters>
+                <Parameter Name="<#= sourceConnectionStringParamName #>" DataType="String"><#= sourceConnectionString #></Parameter>
+                <Parameter Name="<#= destConnectionStringParamName #>" DataType="String"><#= destConnectionString #></Parameter>
+            </Parameters>
+            <Connections>
+                <Connection ConnectionName="<#= sourceConnectionName #>" Id="<#= GetConnectionID(sourceConnectionName) #>">
+                    <Expressions>
+                        <Expression ExternalProperty="ConnectionString">@[$Project::<#= sourceConnectionStringParamName #>]</Expression>
+                    </Expressions>
+                </Connection>
+                <Connection ConnectionName="<#= destConnectionName #>" Id="<#= GetConnectionID(destConnectionName) #>">
+                    <Expressions>
+                        <Expression ExternalProperty="ConnectionString">@[$Project::<#= destConnectionStringParamName #>]</Expression>
+                    </Expressions>
+                </Connection>
+            </Connections>
+            <Packages>
+                <# foreach (var table in theMetadata.TableNodes) { #>
+                <Package PackageName="<#= loadTablePackagePrefix #><#= table.GetTag("TargetTableName") #>" />
+                <# } #>
+                <Package PackageName="<#= controllerPackagePrefix #><#= loadTablePackagePrefix.Trim() #>" />
+            </Packages>
+        </PackageProject>
+    </Projects>
+    <Packages>
+        <Package Name="<#= controllerPackagePrefix #><#= loadTablePackagePrefix.Trim() #>" ConstraintMode="Linear" ProtectionLevel="DontSaveSensitive">
+            <Tasks>
+                <# foreach (var table in theMetadata.TableNodes) { #>
+                <ExecutePackage Name="<#= executePackageTaskPrefix #><#= loadTablePackagePrefix #><#= table.GetTag("TargetTableName") #>">
+                    <ExternalProjectPackage Package="<#= loadTablePackagePrefix #><#= table.GetTag("TargetTableName") #>.dtsx"></ExternalProjectPackage>
+                </ExecutePackage>
+                <# } #>
+            </Tasks>
+        </Package>
+        <# foreach (var table in theMetadata.TableNodes) { #>
+        <Package Name="<#= loadTablePackagePrefix #><#= table.GetTag("TargetTableName") #>" ConstraintMode="Linear" ProtectionLevel="DontSaveSensitive">
+            <Tasks>
+                <ExecuteSQL Name="<#= sqlTaskPrefix#>Truncate <#= table.GetTag("TargetTableName") #>" ConnectionName="<#= destConnectionName #>">
+                    <DirectInput>TRUNCATE TABLE [<#= table.GetTag("TargetSchemaName") #>].[<#= table.GetTag("TargetTableName") #>]</DirectInput>
+                </ExecuteSQL>
+                <Dataflow Name="<#= dataFlowTaskPrefix#>Load <#= table.GetTag("TargetTableName") #>">
+                    <Transformations>
+                        <OleDbSource Name="<#= oleDbSourcePrefix#><#= table.Name #>" ConnectionName="<#= sourceConnectionName #>">
+                            <!-- <ExternalTableInput Table="[<#= table.Schema.Name #>].[<#= table.Name#>]" /> -->
+                            <DirectInput><#= table.GetSelectSql() #></DirectInput>
+                        </OleDbSource>
+                        <OleDbDestination Name="<#= oleDbDestPrefix #><#= table.GetTag("TargetTableName") #>" ConnectionName="<#= destConnectionName #>">
+                            <ExternalTableOutput Table="[<#= table.GetTag("TargetSchemaName") #>].[<#= table.GetTag("TargetTableName") #>]" />
+                        </OleDbDestination>
+                    </Transformations>
+                </Dataflow>
+            </Tasks>
+        </Package>
+        <# } #>
+        
+    </Packages>
+</Biml>

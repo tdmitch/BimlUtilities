@@ -1,0 +1,151 @@
+﻿<#@ import namespace="System.Security.Cryptography" #>
+<#@ import namespace="System.Text" #>
+<#@ include file="..\Generic Biml - Common\050 Common Config.biml" #>
+<# 
+    /************************************************************************************************************
+                                    Begin Configuration Options
+    ************************************************************************************************************/
+    
+    // Project name. Not essential for BimlExpress builds, but useful for BimlStudio builds where multiple projects
+    //  could be created from scratch in Biml.
+    string projectName = "Generic Biml - Simple Staging";
+    
+    // Set the server and DB name from which the metadata will be retrieved. Note that this can be (but does not
+    //  have to be) the same as the destination server.
+    string metadataSrcServer = "(local)";
+    string metadataSrcDatabase = "Northwind";
+    
+    // Set source server and database. This is the instance and database from which data will be retrieved.
+    string sourceServer = "(local)";
+    string sourceDatabase = "Northwind";
+    
+    // Set destination server and database. This is the instance and database where the new tables will be
+    //  created, and to which the data will be loaded.
+    string destServer = "(local)";
+    string destDatabase = "NorthwindStaging";
+    
+    // Optional: Set schema and table name filter. Use either or both of these lists to filter the objects that
+    //  will be created. If no filter is required, simply set these variables equal to null and the filter will
+    //  not be used.
+    List<string> includedSchemas = new List<string>{"dbo"};
+    List<string> includedTables = null; // new List<string>{"TableName1", "TableName2"};
+    
+    // Optional: Table and schema rename. In some cases, we stage the data to a different schema, or give the
+    //  target table a prefix to identify the source from which it came. Leave these values set to null if no
+    //  substitute schema name or target table name prefix is to be used.
+    string substituteSchemaName = null;
+    string targetTableNamePrefix = "";
+    string targetTableNameSuffix = "_Stg";
+    
+    
+    /************************************************************************************************************
+                                    End Configuration Options
+    ************************************************************************************************************/
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    /************************************************************************************************************
+                                            Begin Computed Variables
+    ************************************************************************************************************/
+    
+    /*
+        Note: The code in this section creates variable strings based on variable input from above. Most of
+        the user-editable settings are in the first section above, so most of what appears below here should
+        be left intact.
+    */
+    
+    
+    // Metadata source database connection
+    string metadataSrcConnectionString =  @"Data Source=" + metadataSrcServer + ";Initial Catalog=" + metadataSrcDatabase + ";Provider=SQLNCLI11;Integrated Security=SSPI;";
+    var metadataSrcConnection = SchemaManager.CreateConnectionNode("Source", metadataSrcConnectionString);
+    
+    // Source database connection string
+    string sourceConnectionString =  @"Data Source=" + sourceServer + ";Initial Catalog=" + sourceDatabase + ";Provider=SQLNCLI11;Integrated Security=SSPI;";
+    string sourceConnectionName = oleDbConnectionPrefix + sourceDatabase + oleDbConnectionSuffix;
+    
+    // Destination database connection string
+    string destConnectionString =  @"Data Source=" + destServer + ";Initial Catalog=" + destDatabase + ";Provider=SQLNCLI11;Integrated Security=SSPI;";
+    string destConnectionName = oleDbConnectionPrefix + destDatabase + oleDbConnectionSuffix;
+    
+    
+    // Parameter names
+    string destConnectionStringParamName = projectParamPrefix + destConnectionName + connStrParamSuffix;
+    string sourceConnectionStringParamName = projectParamPrefix + sourceConnectionName + connStrParamSuffix;
+
+
+    // Import schema
+    var theMetadata = metadataSrcConnection.GetDatabaseSchema(includedSchemas, includedTables
+        , ImportOptions.ExcludeCheckConstraint | ImportOptions.ExcludeColumnDefault | ImportOptions.ExcludeForeignKey | ImportOptions.ExcludeIdentity | ImportOptions.ExcludeIndex | ImportOptions.ExcludePrimaryKey | ImportOptions.ExcludeUniqueKey | ImportOptions.ExcludeViews);
+
+    foreach (var table in theMetadata.TableNodes) {
+        // Add the target table name as a new tag
+        string targetTableName = ((targetTableNamePrefix != null && targetTableNamePrefix.Length > 0) ? targetTableNamePrefix : "") + table.Name;
+        table.AddAnnotation(AnnotationType.Tag, targetTableName, "TargetTableName");
+        
+        // Add the target table name as a new tag
+        string targetSchemaName = (substituteSchemaName != null && substituteSchemaName.Length > 0) ? substituteSchemaName : table.Schema.Name;
+        table.AddAnnotation(AnnotationType.Tag, targetSchemaName, "TargetSchemaName");
+    }
+    
+    /************************************************************************************************************
+                                            End Computed Variables
+    ************************************************************************************************************/
+   
+    
+    
+    
+    
+    
+    
+    
+
+    /************************************************************************************************************
+                                                Begin Functions
+    ************************************************************************************************************/
+#>
+<#+
+    /********************************     GetConnectionID     ****************************************/
+    
+    /*
+        Create a properly formatted SSIS connection ID by hashing the connection name input and using
+            the first 32 characters to build the connection ID. While this function is not essential,
+            it will prevent odd errors resulting from regenerating the same SSIS connection from different
+            Biml processes.
+    */
+    public static string GetConnectionID(string connectionName) {
+    
+    var inputString = Encoding.Default.GetBytes(connectionName);
+    
+        var sha1 = new System.Security.Cryptography.SHA1CryptoServiceProvider();
+        byte[] hash = sha1.ComputeHash(inputString);
+        string output = System.Text.Encoding.Default.GetString(hash);
+        
+        System.Text.StringBuilder s = new System.Text.StringBuilder();
+        foreach (byte b in hash)
+        {
+                s.Append(b.ToString("x2").ToUpper());
+        }
+        
+        string outStr = s.ToString();
+        
+        outStr = outStr.Substring(2, outStr.Length - 2);
+        outStr = outStr.Substring(0, 8) + "-" + outStr.Substring(8, 4) + "-" + outStr.Substring(12, 4) + "-" + outStr.Substring(16, 4) + "-" + outStr.Substring(20, 12);
+    
+        return outStr;
+    }
+#>
+<#
+/************************************************************************************************************
+                                            End Functions
+************************************************************************************************************/
+#>

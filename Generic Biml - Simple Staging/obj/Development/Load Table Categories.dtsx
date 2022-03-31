@@ -1,0 +1,383 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/25/2019 9:33:56 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SQL2017DEMO"
+  DTS:CreatorName="Tim"
+  DTS:DTSID="{6C50F722-115D-4B20-99A2-B314758BD41F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Load Table Categories"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{D0B637A9-1E39-4129-AC2C-2F84FE5E331F}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Load Categories"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{6786E5C1-BC98-4ABE-91DB-75DB63C07C15}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Load Categories"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Load Categories\OLEDST - Categories"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="OLEDST - Categories"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Categories]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load Categories\OLEDST - Categories.Connections[OleDbConnection]"
+                  connectionManagerID="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[NorthwindStaging_OLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load Categories\OLEDST - Categories.Inputs[OLESRC - Categories_Output_OLEDST - Categories]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLESRC - Categories_Output_OLEDST - Categories">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load Categories\OLEDST - Categories.Inputs[OLESRC - Categories_Output_OLEDST - Categories].Columns[CategoryID]"
+                      cachedDataType="i4"
+                      cachedName="CategoryID"
+                      externalMetadataColumnId="Package\DFT - Load Categories\OLEDST - Categories.Inputs[OLESRC - Categories_Output_OLEDST - Categories].ExternalColumns[CategoryID]"
+                      lineageId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].Columns[CategoryID]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Categories\OLEDST - Categories.Inputs[OLESRC - Categories_Output_OLEDST - Categories].Columns[CategoryName]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="CategoryName"
+                      externalMetadataColumnId="Package\DFT - Load Categories\OLEDST - Categories.Inputs[OLESRC - Categories_Output_OLEDST - Categories].ExternalColumns[CategoryName]"
+                      lineageId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].Columns[CategoryName]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Categories\OLEDST - Categories.Inputs[OLESRC - Categories_Output_OLEDST - Categories].Columns[Description]"
+                      cachedDataType="nText"
+                      cachedName="Description"
+                      externalMetadataColumnId="Package\DFT - Load Categories\OLEDST - Categories.Inputs[OLESRC - Categories_Output_OLEDST - Categories].ExternalColumns[Description]"
+                      lineageId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].Columns[Description]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Categories\OLEDST - Categories.Inputs[OLESRC - Categories_Output_OLEDST - Categories].Columns[Picture]"
+                      cachedDataType="image"
+                      cachedName="Picture"
+                      externalMetadataColumnId="Package\DFT - Load Categories\OLEDST - Categories.Inputs[OLESRC - Categories_Output_OLEDST - Categories].ExternalColumns[Picture]"
+                      lineageId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].Columns[Picture]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Categories\OLEDST - Categories.Inputs[OLESRC - Categories_Output_OLEDST - Categories].ExternalColumns[CategoryID]"
+                      dataType="i4"
+                      name="CategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Categories\OLEDST - Categories.Inputs[OLESRC - Categories_Output_OLEDST - Categories].ExternalColumns[CategoryName]"
+                      dataType="wstr"
+                      length="15"
+                      name="CategoryName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Categories\OLEDST - Categories.Inputs[OLESRC - Categories_Output_OLEDST - Categories].ExternalColumns[Description]"
+                      dataType="nText"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Categories\OLEDST - Categories.Inputs[OLESRC - Categories_Output_OLEDST - Categories].ExternalColumns[Picture]"
+                      dataType="image"
+                      name="Picture" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load Categories\OLEDST - Categories.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\DFT - Load Categories\OLEDST - Categories.Inputs[OLESRC - Categories_Output_OLEDST - Categories]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Categories\OLEDST - Categories.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Categories\OLEDST - Categories.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load Categories\OLEDST - Categories.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Categories\OLEDST - Categories.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load Categories\OLESRC - Categories"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="OLESRC - Categories"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [CategoryID]
+,[CategoryName]
+,[Description]
+,[Picture]
+FROM [dbo].[Categories]
+</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load Categories\OLESRC - Categories.Connections[OleDbConnection]"
+                  connectionManagerID="{11940E74-AEC7-11B1-7C97-C83A268A201E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Northwind_OLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].Columns[CategoryID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].ExternalColumns[CategoryID]"
+                      lineageId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].Columns[CategoryID]"
+                      name="CategoryID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].Columns[CategoryName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].ExternalColumns[CategoryName]"
+                      length="15"
+                      lineageId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].Columns[CategoryName]"
+                      name="CategoryName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].Columns[Description]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].ExternalColumns[Description]"
+                      lineageId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].Columns[Description]"
+                      name="Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].Columns[Picture]"
+                      dataType="image"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].ExternalColumns[Picture]"
+                      lineageId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].Columns[Picture]"
+                      name="Picture"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].ExternalColumns[CategoryID]"
+                      dataType="i4"
+                      name="CategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].ExternalColumns[CategoryName]"
+                      dataType="wstr"
+                      length="15"
+                      name="CategoryName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].ExternalColumns[Description]"
+                      dataType="nText"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output].ExternalColumns[Picture]"
+                      dataType="image"
+                      name="Picture" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Error].Columns[CategoryID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Error].Columns[CategoryID]"
+                      name="CategoryID" />
+                    <outputColumn
+                      refId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Error].Columns[CategoryName]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Error].Columns[CategoryName]"
+                      name="CategoryName" />
+                    <outputColumn
+                      refId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Error].Columns[Description]"
+                      dataType="nText"
+                      lineageId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Error].Columns[Description]"
+                      name="Description" />
+                    <outputColumn
+                      refId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Error].Columns[Picture]"
+                      dataType="image"
+                      lineageId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Error].Columns[Picture]"
+                      name="Picture" />
+                    <outputColumn
+                      refId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Load Categories.Paths[OLESRC - Categories_Output_OLEDST - Categories]"
+              endId="Package\DFT - Load Categories\OLEDST - Categories.Inputs[OLESRC - Categories_Output_OLEDST - Categories]"
+              name="OLESRC - Categories_Output_OLEDST - Categories"
+              startId="Package\DFT - Load Categories\OLESRC - Categories.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate Categories"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{65FFB8F9-1942-4566-92DC-4A09F52083CB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate Categories"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[Categories]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Truncate Categories_To_DFT - Load Categories]"
+      DTS:CreationName=""
+      DTS:DTSID="{6CCEC3FE-2DA5-4462-8E8A-4020DECB8160}"
+      DTS:From="Package\SQL - Truncate Categories"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Truncate Categories_To_DFT - Load Categories"
+      DTS:To="Package\DFT - Load Categories" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

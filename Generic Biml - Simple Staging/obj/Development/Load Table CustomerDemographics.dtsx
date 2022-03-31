@@ -1,0 +1,325 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/25/2019 9:33:56 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SQL2017DEMO"
+  DTS:CreatorName="Tim"
+  DTS:DTSID="{BBD6CF15-B91E-42C2-AB09-A9710818F250}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Load Table CustomerDemographics"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{4EB3C4E0-2570-470C-942B-B003A0E0CBFD}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Load CustomerDemographics"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{45359974-C650-40EC-BE3A-B9AC4736CA02}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Load CustomerDemographics"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Load CustomerDemographics\OLEDST - CustomerDemographics"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="OLEDST - CustomerDemographics"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CustomerDemographics]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load CustomerDemographics\OLEDST - CustomerDemographics.Connections[OleDbConnection]"
+                  connectionManagerID="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[NorthwindStaging_OLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load CustomerDemographics\OLEDST - CustomerDemographics.Inputs[OLESRC - CustomerDemographics_Output_OLEDST - CustomerDemographics]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLESRC - CustomerDemographics_Output_OLEDST - CustomerDemographics">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load CustomerDemographics\OLEDST - CustomerDemographics.Inputs[OLESRC - CustomerDemographics_Output_OLEDST - CustomerDemographics].Columns[CustomerTypeID]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="CustomerTypeID"
+                      externalMetadataColumnId="Package\DFT - Load CustomerDemographics\OLEDST - CustomerDemographics.Inputs[OLESRC - CustomerDemographics_Output_OLEDST - CustomerDemographics].ExternalColumns[CustomerTypeID]"
+                      lineageId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Output].Columns[CustomerTypeID]" />
+                    <inputColumn
+                      refId="Package\DFT - Load CustomerDemographics\OLEDST - CustomerDemographics.Inputs[OLESRC - CustomerDemographics_Output_OLEDST - CustomerDemographics].Columns[CustomerDesc]"
+                      cachedDataType="nText"
+                      cachedName="CustomerDesc"
+                      externalMetadataColumnId="Package\DFT - Load CustomerDemographics\OLEDST - CustomerDemographics.Inputs[OLESRC - CustomerDemographics_Output_OLEDST - CustomerDemographics].ExternalColumns[CustomerDesc]"
+                      lineageId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Output].Columns[CustomerDesc]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load CustomerDemographics\OLEDST - CustomerDemographics.Inputs[OLESRC - CustomerDemographics_Output_OLEDST - CustomerDemographics].ExternalColumns[CustomerTypeID]"
+                      dataType="wstr"
+                      length="10"
+                      name="CustomerTypeID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load CustomerDemographics\OLEDST - CustomerDemographics.Inputs[OLESRC - CustomerDemographics_Output_OLEDST - CustomerDemographics].ExternalColumns[CustomerDesc]"
+                      dataType="nText"
+                      name="CustomerDesc" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load CustomerDemographics\OLEDST - CustomerDemographics.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\DFT - Load CustomerDemographics\OLEDST - CustomerDemographics.Inputs[OLESRC - CustomerDemographics_Output_OLEDST - CustomerDemographics]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load CustomerDemographics\OLEDST - CustomerDemographics.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load CustomerDemographics\OLEDST - CustomerDemographics.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load CustomerDemographics\OLEDST - CustomerDemographics.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load CustomerDemographics\OLEDST - CustomerDemographics.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="OLESRC - CustomerDemographics"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [CustomerTypeID]
+,[CustomerDesc]
+FROM [dbo].[CustomerDemographics]
+</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Connections[OleDbConnection]"
+                  connectionManagerID="{11940E74-AEC7-11B1-7C97-C83A268A201E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Northwind_OLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Output].Columns[CustomerTypeID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Output].ExternalColumns[CustomerTypeID]"
+                      length="10"
+                      lineageId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Output].Columns[CustomerTypeID]"
+                      name="CustomerTypeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Output].Columns[CustomerDesc]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Output].ExternalColumns[CustomerDesc]"
+                      lineageId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Output].Columns[CustomerDesc]"
+                      name="CustomerDesc"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Output].ExternalColumns[CustomerTypeID]"
+                      dataType="wstr"
+                      length="10"
+                      name="CustomerTypeID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Output].ExternalColumns[CustomerDesc]"
+                      dataType="nText"
+                      name="CustomerDesc" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Error].Columns[CustomerTypeID]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Error].Columns[CustomerTypeID]"
+                      name="CustomerTypeID" />
+                    <outputColumn
+                      refId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Error].Columns[CustomerDesc]"
+                      dataType="nText"
+                      lineageId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Error].Columns[CustomerDesc]"
+                      name="CustomerDesc" />
+                    <outputColumn
+                      refId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Load CustomerDemographics.Paths[OLESRC - CustomerDemographics_Output_OLEDST - CustomerDemographics]"
+              endId="Package\DFT - Load CustomerDemographics\OLEDST - CustomerDemographics.Inputs[OLESRC - CustomerDemographics_Output_OLEDST - CustomerDemographics]"
+              name="OLESRC - CustomerDemographics_Output_OLEDST - CustomerDemographics"
+              startId="Package\DFT - Load CustomerDemographics\OLESRC - CustomerDemographics.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate CustomerDemographics"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{358C4051-5AF5-4A7B-806B-01E7B0C1C19E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate CustomerDemographics"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[CustomerDemographics]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Truncate CustomerDemographics_To_DFT - Load CustomerDemographics]"
+      DTS:CreationName=""
+      DTS:DTSID="{9115CCBC-A13D-4D36-834C-8E7F95E74141}"
+      DTS:From="Package\SQL - Truncate CustomerDemographics"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Truncate CustomerDemographics_To_DFT - Load CustomerDemographics"
+      DTS:To="Package\DFT - Load CustomerDemographics" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

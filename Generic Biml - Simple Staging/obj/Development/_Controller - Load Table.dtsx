@@ -1,0 +1,327 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/25/2019 9:33:56 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SQL2017DEMO"
+  DTS:CreatorName="Tim"
+  DTS:DTSID="{590E420A-4F4B-4093-9967-D3E40AE0B9FA}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="_Controller - Load Table"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{3E7F3F04-F734-4055-85BB-7A08539226DF}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\ExPkg - Load Table Categories"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{A5535B14-0C41-4AD6-B78A-00133144BB31}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ExPkg - Load Table Categories"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Load Table Categories.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ExPkg - Load Table CustomerCustomerDemo"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{14875E23-1D23-465B-A8E8-7FFAA2CDA828}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ExPkg - Load Table CustomerCustomerDemo"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Load Table CustomerCustomerDemo.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ExPkg - Load Table CustomerDemographics"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{43A36A05-12C6-46F9-9E81-D1EC1EF1294F}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ExPkg - Load Table CustomerDemographics"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Load Table CustomerDemographics.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ExPkg - Load Table Customers"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{280CE274-C656-404B-BF90-C56DD0686DBD}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ExPkg - Load Table Customers"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Load Table Customers.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ExPkg - Load Table Employees"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{1CD81A74-DE9B-4D72-BEC7-B44D8031B3DC}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ExPkg - Load Table Employees"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Load Table Employees.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ExPkg - Load Table EmployeeTerritories"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{638C7A6A-66CF-4B9B-AF8E-D123DDECB5DA}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ExPkg - Load Table EmployeeTerritories"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Load Table EmployeeTerritories.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ExPkg - Load Table Order Details"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{CC21BAC7-7852-4BC6-8C3C-66EDBB603DD6}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ExPkg - Load Table Order Details"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Load Table Order Details.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ExPkg - Load Table Orders"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{F4E64224-EBB8-42B0-BCEF-DC030F64E9EC}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ExPkg - Load Table Orders"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Load Table Orders.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ExPkg - Load Table Products"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{303626CC-3BA8-4991-807C-D9E95E037F8B}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ExPkg - Load Table Products"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Load Table Products.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ExPkg - Load Table Region"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{584D11A1-7D4B-4FDE-9633-4BDF6D6B1868}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ExPkg - Load Table Region"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Load Table Region.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ExPkg - Load Table Shippers"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{5FC887F8-5BB4-4268-9B5C-AC21AA8D3B93}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ExPkg - Load Table Shippers"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Load Table Shippers.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ExPkg - Load Table Suppliers"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{AB5C91BE-CCA0-4EA0-AD65-FDC546430BD8}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ExPkg - Load Table Suppliers"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Load Table Suppliers.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ExPkg - Load Table Territories"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{BB5B3FB1-4351-4AB2-9156-E2A47390A4FA}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ExPkg - Load Table Territories"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Load Table Territories.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_ExPkg - Load Table Categories_To_ExPkg - Load Table CustomerCustomerDemo]"
+      DTS:CreationName=""
+      DTS:DTSID="{B6F5E256-DA8A-472F-909B-25848E78F20B}"
+      DTS:From="Package\ExPkg - Load Table Categories"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_ExPkg - Load Table Categories_To_ExPkg - Load Table CustomerCustomerDemo"
+      DTS:To="Package\ExPkg - Load Table CustomerCustomerDemo" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_ExPkg - Load Table CustomerCustomerDemo_To_ExPkg - Load Table CustomerDemographics]"
+      DTS:CreationName=""
+      DTS:DTSID="{88583BA0-DA82-466B-B6F9-7DBF11011380}"
+      DTS:From="Package\ExPkg - Load Table CustomerCustomerDemo"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_ExPkg - Load Table CustomerCustomerDemo_To_ExPkg - Load Table CustomerDemographics"
+      DTS:To="Package\ExPkg - Load Table CustomerDemographics" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_ExPkg - Load Table CustomerDemographics_To_ExPkg - Load Table Customers]"
+      DTS:CreationName=""
+      DTS:DTSID="{57DDFAFF-8417-4D4B-BC95-E0848A5DA378}"
+      DTS:From="Package\ExPkg - Load Table CustomerDemographics"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_ExPkg - Load Table CustomerDemographics_To_ExPkg - Load Table Customers"
+      DTS:To="Package\ExPkg - Load Table Customers" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_ExPkg - Load Table Customers_To_ExPkg - Load Table Employees]"
+      DTS:CreationName=""
+      DTS:DTSID="{D2C126A2-F857-4615-AE15-70CC6D93134C}"
+      DTS:From="Package\ExPkg - Load Table Customers"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_ExPkg - Load Table Customers_To_ExPkg - Load Table Employees"
+      DTS:To="Package\ExPkg - Load Table Employees" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_ExPkg - Load Table Employees_To_ExPkg - Load Table EmployeeTerritories]"
+      DTS:CreationName=""
+      DTS:DTSID="{A4A0DD94-7F7E-42E0-82D3-5172F8681B0E}"
+      DTS:From="Package\ExPkg - Load Table Employees"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_ExPkg - Load Table Employees_To_ExPkg - Load Table EmployeeTerritories"
+      DTS:To="Package\ExPkg - Load Table EmployeeTerritories" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_ExPkg - Load Table EmployeeTerritories_To_ExPkg - Load Table Order Details]"
+      DTS:CreationName=""
+      DTS:DTSID="{2A5C7E1B-694C-43D2-9241-BCC088B7C5C0}"
+      DTS:From="Package\ExPkg - Load Table EmployeeTerritories"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_ExPkg - Load Table EmployeeTerritories_To_ExPkg - Load Table Order Details"
+      DTS:To="Package\ExPkg - Load Table Order Details" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_ExPkg - Load Table Order Details_To_ExPkg - Load Table Orders]"
+      DTS:CreationName=""
+      DTS:DTSID="{69997362-EA54-4859-B6EA-906005BF5786}"
+      DTS:From="Package\ExPkg - Load Table Order Details"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_ExPkg - Load Table Order Details_To_ExPkg - Load Table Orders"
+      DTS:To="Package\ExPkg - Load Table Orders" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_ExPkg - Load Table Orders_To_ExPkg - Load Table Products]"
+      DTS:CreationName=""
+      DTS:DTSID="{5FE0E871-27FB-4EB1-B19A-70208F1878BE}"
+      DTS:From="Package\ExPkg - Load Table Orders"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_ExPkg - Load Table Orders_To_ExPkg - Load Table Products"
+      DTS:To="Package\ExPkg - Load Table Products" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_ExPkg - Load Table Products_To_ExPkg - Load Table Region]"
+      DTS:CreationName=""
+      DTS:DTSID="{64151F18-194C-41D8-BE4B-06439658E144}"
+      DTS:From="Package\ExPkg - Load Table Products"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_ExPkg - Load Table Products_To_ExPkg - Load Table Region"
+      DTS:To="Package\ExPkg - Load Table Region" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_ExPkg - Load Table Region_To_ExPkg - Load Table Shippers]"
+      DTS:CreationName=""
+      DTS:DTSID="{EAA9FC3C-89CE-407F-A606-872756137F8E}"
+      DTS:From="Package\ExPkg - Load Table Region"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_ExPkg - Load Table Region_To_ExPkg - Load Table Shippers"
+      DTS:To="Package\ExPkg - Load Table Shippers" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_ExPkg - Load Table Shippers_To_ExPkg - Load Table Suppliers]"
+      DTS:CreationName=""
+      DTS:DTSID="{C58F1831-28E8-4668-BF95-82DAAB1AD6F6}"
+      DTS:From="Package\ExPkg - Load Table Shippers"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_ExPkg - Load Table Shippers_To_ExPkg - Load Table Suppliers"
+      DTS:To="Package\ExPkg - Load Table Suppliers" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_ExPkg - Load Table Suppliers_To_ExPkg - Load Table Territories]"
+      DTS:CreationName=""
+      DTS:DTSID="{78C5B562-C949-41DD-B0B6-DE49F2049033}"
+      DTS:From="Package\ExPkg - Load Table Suppliers"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_ExPkg - Load Table Suppliers_To_ExPkg - Load Table Territories"
+      DTS:To="Package\ExPkg - Load Table Territories" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

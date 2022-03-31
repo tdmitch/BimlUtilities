@@ -1,0 +1,20 @@
+<#@ include file="..\Generic Biml - Common\050 Common Config.biml" #>
+<!--
+    This Biml file will generate the packages for creating tables. Note that this depends on the 100*
+    file before it, which creates the in-memory table objects for Biml to loop through in this step.
+-->
+
+<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+    <Packages>
+        <Package Name="_Create Tables" ConstraintMode="Linear">    
+            <Tasks>
+                
+            <# foreach (var table in RootNode.Tables) { #>  
+                <ExecuteSQL Name="<#= sqlTaskPrefix #> Create <#= table.Name #>" ConnectionName="<#= table.Connection.Name #>">
+                    <DirectInput><#= table.GetTableSql() #></DirectInput>
+                </ExecuteSQL>
+            <# } #> 
+            </Tasks>
+        </Package>
+    </Packages>
+</Biml>

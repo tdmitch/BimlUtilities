@@ -1,0 +1,79 @@
+﻿<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.IO" #>
+<#@ include file="..\Generic Biml - Common\000 Functions.biml" #>
+<#@ include file="..\Generic Biml - Common\050 Common Config.biml" #>
+<#
+    /****       Import Options        *****/
+    string replaceSpacesInObjectNameWith = "_";
+    
+    string destServer = "SQL2017DEMO";
+    string destDatabase = "NorthwindStaging";
+    string destSchema = "dbo";
+    string sourceDir = @"e:\testfiles\";
+    
+    string destConnectionName = oleDbConnectionPrefix + destDatabase + oleDbConnectionSuffix;
+#>
+<!-- 
+    This Biml file is the starting point for generating SSIS packages from flat files. This file sets
+    the source directory location, and creates a Biml Table object from each file.
+-->
+
+<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+
+    <Connections>
+        <Connection Name="<#= destConnectionName #>" ConnectionString="Data Source=<#= destServer #>;Initial Catalog=<#= destDatabase #>;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;"></Connection>
+    </Connections>
+
+    <Databases>
+        <Database Name="<#= destDatabase #>" ConnectionName="<#= destConnectionName #>"></Database>
+    </Databases> 
+     
+    <Schemas>
+        <Schema Name="<#= destSchema #>" DatabaseName="<#= destDatabase #>"></Schema>
+    </Schemas>
+    
+    <Tables>
+    <#
+        DirectoryInfo dir = new DirectoryInfo(sourceDir);
+        
+        foreach (FileInfo f in dir.GetFiles()) { #>
+        <Table Name="<#= f.Name.Replace(f.Extension, "").Trim().Replace(" ", replaceSpacesInObjectNameWith) #>" SchemaName="<#= destDatabase #>.<#= destSchema #>">
+            <Columns>
+            <#
+                DataTable dtThisFile = AnalyzeFile(f.FullName, ",", false);
+                foreach (DataRow thisCol in dtThisFile.Rows) {
+                    thisCol["Name"] = thisCol["Name"].ToString().Trim().Replace(" ", replaceSpacesInObjectNameWith);
+            #>
+                <#= GetColumnBiml(thisCol) #>   
+            <# } #>
+            </Columns>
+            <Annotations>
+                <Annotation Tag="FilePath"><#= f.FullName #></Annotation>
+            </Annotations>
+        </Table>
+    <# 
+            
+        } #>
+    </Tables>
+</Biml>
+
+<#+ 
+    public static string GetColumnBiml(DataRow theRow) {
+    
+        string output = "<Column Name=\"" + theRow["Name"].ToString() + "\""
+            + " DataType=\"" + theRow["InferredDataType"].ToString() + "\"";
+        
+        if (theRow["InferredDataType"].ToString() == "AnsiString") 
+            output += " Length=\"" + theRow["MaxLength"].ToString() + "\"";
+            
+        if (theRow["InferredDataType"].ToString() == "Decimal") 
+            output += " Precision=\"" + theRow["MaxLength"].ToString() + "\""
+                + " Scale=\"" + theRow["MaxScale"].ToString() + "\"";
+        
+        
+        output += "></Column>";
+    
+        return output;
+    }
+#>

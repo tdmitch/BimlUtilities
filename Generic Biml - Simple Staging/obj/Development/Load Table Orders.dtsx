@@ -1,0 +1,703 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/25/2019 9:33:56 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SQL2017DEMO"
+  DTS:CreatorName="Tim"
+  DTS:DTSID="{55F5A94B-CE09-41BE-9A87-E76698B501F1}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Load Table Orders"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{7344F024-BE76-4FD2-8B19-FDA912797445}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Load Orders"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{CC20BBEF-8659-4844-9800-B1B0264A8BEE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Load Orders"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Load Orders\OLEDST - Orders"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="OLEDST - Orders"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Orders]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load Orders\OLEDST - Orders.Connections[OleDbConnection]"
+                  connectionManagerID="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[NorthwindStaging_OLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLESRC - Orders_Output_OLEDST - Orders">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].Columns[OrderID]"
+                      cachedDataType="i4"
+                      cachedName="OrderID"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[OrderID]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[OrderID]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].Columns[CustomerID]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[CustomerID]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[EmployeeID]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].Columns[OrderDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="OrderDate"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[OrderDate]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[OrderDate]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].Columns[RequiredDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="RequiredDate"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[RequiredDate]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[RequiredDate]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].Columns[ShippedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ShippedDate"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[ShippedDate]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShippedDate]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].Columns[ShipVia]"
+                      cachedDataType="i4"
+                      cachedName="ShipVia"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[ShipVia]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipVia]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].Columns[Freight]"
+                      cachedDataType="cy"
+                      cachedName="Freight"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[Freight]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[Freight]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].Columns[ShipName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="ShipName"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[ShipName]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipName]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].Columns[ShipAddress]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="ShipAddress"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[ShipAddress]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipAddress]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].Columns[ShipCity]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="ShipCity"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[ShipCity]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipCity]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].Columns[ShipRegion]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="ShipRegion"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[ShipRegion]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipRegion]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].Columns[ShipPostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ShipPostalCode"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[ShipPostalCode]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipPostalCode]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].Columns[ShipCountry]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="ShipCountry"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[ShipCountry]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipCountry]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[OrderID]"
+                      dataType="i4"
+                      name="OrderID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[RequiredDate]"
+                      dataType="dbTimeStamp"
+                      name="RequiredDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[ShippedDate]"
+                      dataType="dbTimeStamp"
+                      name="ShippedDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[ShipVia]"
+                      dataType="i4"
+                      name="ShipVia" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[Freight]"
+                      dataType="cy"
+                      name="Freight" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[ShipName]"
+                      dataType="wstr"
+                      length="40"
+                      name="ShipName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[ShipAddress]"
+                      dataType="wstr"
+                      length="60"
+                      name="ShipAddress" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[ShipCity]"
+                      dataType="wstr"
+                      length="15"
+                      name="ShipCity" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[ShipRegion]"
+                      dataType="wstr"
+                      length="15"
+                      name="ShipRegion" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[ShipPostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="ShipPostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders].ExternalColumns[ShipCountry]"
+                      dataType="wstr"
+                      length="15"
+                      name="ShipCountry" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load Orders\OLEDST - Orders.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Orders\OLEDST - Orders.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLEDST - Orders.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Orders\OLEDST - Orders.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load Orders\OLESRC - Orders"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="OLESRC - Orders"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [OrderID]
+,[CustomerID]
+,[EmployeeID]
+,[OrderDate]
+,[RequiredDate]
+,[ShippedDate]
+,[ShipVia]
+,[Freight]
+,[ShipName]
+,[ShipAddress]
+,[ShipCity]
+,[ShipRegion]
+,[ShipPostalCode]
+,[ShipCountry]
+FROM [dbo].[Orders]
+</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load Orders\OLESRC - Orders.Connections[OleDbConnection]"
+                  connectionManagerID="{11940E74-AEC7-11B1-7C97-C83A268A201E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Northwind_OLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[OrderID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[OrderID]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[OrderID]"
+                      name="OrderID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[CustomerID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[CustomerID]"
+                      length="5"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[EmployeeID]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[OrderDate]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[OrderDate]"
+                      name="OrderDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[RequiredDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[RequiredDate]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[RequiredDate]"
+                      name="RequiredDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShippedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[ShippedDate]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShippedDate]"
+                      name="ShippedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipVia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[ShipVia]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipVia]"
+                      name="ShipVia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[Freight]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[Freight]"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[Freight]"
+                      name="Freight"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[ShipName]"
+                      length="40"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipName]"
+                      name="ShipName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipAddress]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[ShipAddress]"
+                      length="60"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipAddress]"
+                      name="ShipAddress"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipCity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[ShipCity]"
+                      length="15"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipCity]"
+                      name="ShipCity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipRegion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[ShipRegion]"
+                      length="15"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipRegion]"
+                      name="ShipRegion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipPostalCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[ShipPostalCode]"
+                      length="10"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipPostalCode]"
+                      name="ShipPostalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipCountry]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[ShipCountry]"
+                      length="15"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].Columns[ShipCountry]"
+                      name="ShipCountry"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[OrderID]"
+                      dataType="i4"
+                      name="OrderID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[RequiredDate]"
+                      dataType="dbTimeStamp"
+                      name="RequiredDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[ShippedDate]"
+                      dataType="dbTimeStamp"
+                      name="ShippedDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[ShipVia]"
+                      dataType="i4"
+                      name="ShipVia" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[Freight]"
+                      dataType="cy"
+                      name="Freight" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[ShipName]"
+                      dataType="wstr"
+                      length="40"
+                      name="ShipName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[ShipAddress]"
+                      dataType="wstr"
+                      length="60"
+                      name="ShipAddress" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[ShipCity]"
+                      dataType="wstr"
+                      length="15"
+                      name="ShipCity" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[ShipRegion]"
+                      dataType="wstr"
+                      length="15"
+                      name="ShipRegion" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[ShipPostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="ShipPostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output].ExternalColumns[ShipCountry]"
+                      dataType="wstr"
+                      length="15"
+                      name="ShipCountry" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[OrderID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[OrderID]"
+                      name="OrderID" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[OrderDate]"
+                      name="OrderDate" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[RequiredDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[RequiredDate]"
+                      name="RequiredDate" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ShippedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ShippedDate]"
+                      name="ShippedDate" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ShipVia]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ShipVia]"
+                      name="ShipVia" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[Freight]"
+                      dataType="cy"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[Freight]"
+                      name="Freight" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ShipName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ShipName]"
+                      name="ShipName" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ShipAddress]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ShipAddress]"
+                      name="ShipAddress" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ShipCity]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ShipCity]"
+                      name="ShipCity" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ShipRegion]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ShipRegion]"
+                      name="ShipRegion" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ShipPostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ShipPostalCode]"
+                      name="ShipPostalCode" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ShipCountry]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ShipCountry]"
+                      name="ShipCountry" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Load Orders.Paths[OLESRC - Orders_Output_OLEDST - Orders]"
+              endId="Package\DFT - Load Orders\OLEDST - Orders.Inputs[OLESRC - Orders_Output_OLEDST - Orders]"
+              name="OLESRC - Orders_Output_OLEDST - Orders"
+              startId="Package\DFT - Load Orders\OLESRC - Orders.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate Orders"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{CF774817-AEDF-470B-8A17-4F283364E9F2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate Orders"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[Orders]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Truncate Orders_To_DFT - Load Orders]"
+      DTS:CreationName=""
+      DTS:DTSID="{96A0FD5C-6134-4C11-B230-48CB2F92FE11}"
+      DTS:From="Package\SQL - Truncate Orders"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Truncate Orders_To_DFT - Load Orders"
+      DTS:To="Package\DFT - Load Orders" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

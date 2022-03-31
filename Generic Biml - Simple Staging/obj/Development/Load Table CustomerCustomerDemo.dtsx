@@ -1,0 +1,330 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/25/2019 9:33:56 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SQL2017DEMO"
+  DTS:CreatorName="Tim"
+  DTS:DTSID="{9CE10B02-807F-4BB8-A7B4-AFF7F6E376EA}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Load Table CustomerCustomerDemo"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{7EF23378-4983-4C7A-B70D-487C8612E65B}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Load CustomerCustomerDemo"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{57584516-C644-4A6B-8699-FC7433230E39}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Load CustomerCustomerDemo"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Load CustomerCustomerDemo\OLEDST - CustomerCustomerDemo"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="OLEDST - CustomerCustomerDemo"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CustomerCustomerDemo]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load CustomerCustomerDemo\OLEDST - CustomerCustomerDemo.Connections[OleDbConnection]"
+                  connectionManagerID="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[NorthwindStaging_OLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load CustomerCustomerDemo\OLEDST - CustomerCustomerDemo.Inputs[OLESRC - CustomerCustomerDemo_Output_OLEDST - CustomerCustomerDemo]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLESRC - CustomerCustomerDemo_Output_OLEDST - CustomerCustomerDemo">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load CustomerCustomerDemo\OLEDST - CustomerCustomerDemo.Inputs[OLESRC - CustomerCustomerDemo_Output_OLEDST - CustomerCustomerDemo].Columns[CustomerID]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\DFT - Load CustomerCustomerDemo\OLEDST - CustomerCustomerDemo.Inputs[OLESRC - CustomerCustomerDemo_Output_OLEDST - CustomerCustomerDemo].ExternalColumns[CustomerID]"
+                      lineageId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\DFT - Load CustomerCustomerDemo\OLEDST - CustomerCustomerDemo.Inputs[OLESRC - CustomerCustomerDemo_Output_OLEDST - CustomerCustomerDemo].Columns[CustomerTypeID]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="CustomerTypeID"
+                      externalMetadataColumnId="Package\DFT - Load CustomerCustomerDemo\OLEDST - CustomerCustomerDemo.Inputs[OLESRC - CustomerCustomerDemo_Output_OLEDST - CustomerCustomerDemo].ExternalColumns[CustomerTypeID]"
+                      lineageId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Output].Columns[CustomerTypeID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load CustomerCustomerDemo\OLEDST - CustomerCustomerDemo.Inputs[OLESRC - CustomerCustomerDemo_Output_OLEDST - CustomerCustomerDemo].ExternalColumns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load CustomerCustomerDemo\OLEDST - CustomerCustomerDemo.Inputs[OLESRC - CustomerCustomerDemo_Output_OLEDST - CustomerCustomerDemo].ExternalColumns[CustomerTypeID]"
+                      dataType="wstr"
+                      length="10"
+                      name="CustomerTypeID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load CustomerCustomerDemo\OLEDST - CustomerCustomerDemo.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\DFT - Load CustomerCustomerDemo\OLEDST - CustomerCustomerDemo.Inputs[OLESRC - CustomerCustomerDemo_Output_OLEDST - CustomerCustomerDemo]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load CustomerCustomerDemo\OLEDST - CustomerCustomerDemo.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load CustomerCustomerDemo\OLEDST - CustomerCustomerDemo.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load CustomerCustomerDemo\OLEDST - CustomerCustomerDemo.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load CustomerCustomerDemo\OLEDST - CustomerCustomerDemo.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="OLESRC - CustomerCustomerDemo"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [CustomerID]
+,[CustomerTypeID]
+FROM [dbo].[CustomerCustomerDemo]
+</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Connections[OleDbConnection]"
+                  connectionManagerID="{11940E74-AEC7-11B1-7C97-C83A268A201E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Northwind_OLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Output].Columns[CustomerID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Output].ExternalColumns[CustomerID]"
+                      length="5"
+                      lineageId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Output].Columns[CustomerTypeID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Output].ExternalColumns[CustomerTypeID]"
+                      length="10"
+                      lineageId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Output].Columns[CustomerTypeID]"
+                      name="CustomerTypeID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Output].ExternalColumns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Output].ExternalColumns[CustomerTypeID]"
+                      dataType="wstr"
+                      length="10"
+                      name="CustomerTypeID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Error].Columns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Error].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Error].Columns[CustomerTypeID]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Error].Columns[CustomerTypeID]"
+                      name="CustomerTypeID" />
+                    <outputColumn
+                      refId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Load CustomerCustomerDemo.Paths[OLESRC - CustomerCustomerDemo_Output_OLEDST - CustomerCustomerDemo]"
+              endId="Package\DFT - Load CustomerCustomerDemo\OLEDST - CustomerCustomerDemo.Inputs[OLESRC - CustomerCustomerDemo_Output_OLEDST - CustomerCustomerDemo]"
+              name="OLESRC - CustomerCustomerDemo_Output_OLEDST - CustomerCustomerDemo"
+              startId="Package\DFT - Load CustomerCustomerDemo\OLESRC - CustomerCustomerDemo.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate CustomerCustomerDemo"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{110736E1-14CB-432C-A6A0-03B1F6B84EEA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate CustomerCustomerDemo"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[CustomerCustomerDemo]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Truncate CustomerCustomerDemo_To_DFT - Load CustomerCustomerDemo]"
+      DTS:CreationName=""
+      DTS:DTSID="{4933BF22-7707-4D90-849B-DB0E89DF2A4E}"
+      DTS:From="Package\SQL - Truncate CustomerCustomerDemo"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Truncate CustomerCustomerDemo_To_DFT - Load CustomerCustomerDemo"
+      DTS:To="Package\DFT - Load CustomerCustomerDemo" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

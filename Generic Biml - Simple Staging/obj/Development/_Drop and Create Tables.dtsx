@@ -1,0 +1,327 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/25/2019 9:33:49 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SQL2017DEMO"
+  DTS:CreatorName="Tim"
+  DTS:DTSID="{D031DE12-67C8-46D1-A7E3-19D93A929E89}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="_Drop and Create Tables"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{B4477110-594A-486B-89F5-127F6D74181F}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Create Table Categories"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{ED78D422-882F-4042-A64E-F8C19B3F69C1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Create Table Categories"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="SET ANSI_NULLS ON&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;-------------------------------------------------------------------&#xA;IF EXISTS (SELECT * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Categories]') AND type IN (N'U'))&#xA;DROP TABLE [dbo].[Categories]&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[Categories]&#xA;(&#xA;-- Columns Definition&#xA; [CategoryID] int NOT NULL &#xA;, [CategoryName] nvarchar(15) NOT NULL &#xA;, [Description] ntext &#xA;, [Picture] image &#xA;&#xA;-- Constraints&#xA;&#xA;)&#xA;ON &quot;default&quot;&#xA;WITH (DATA_COMPRESSION = NONE)&#xA;GO&#xA;&#xA;-------------------------------------------------------------------" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Create Table CustomerCustomerDemo"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{BF8E37B9-C9AD-43B6-B52E-79A18C7D933A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Create Table CustomerCustomerDemo"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="SET ANSI_NULLS ON&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;-------------------------------------------------------------------&#xA;IF EXISTS (SELECT * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[CustomerCustomerDemo]') AND type IN (N'U'))&#xA;DROP TABLE [dbo].[CustomerCustomerDemo]&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[CustomerCustomerDemo]&#xA;(&#xA;-- Columns Definition&#xA; [CustomerID] nchar(5) NOT NULL &#xA;, [CustomerTypeID] nchar(10) NOT NULL &#xA;&#xA;-- Constraints&#xA;&#xA;)&#xA;ON &quot;default&quot;&#xA;WITH (DATA_COMPRESSION = NONE)&#xA;GO&#xA;&#xA;-------------------------------------------------------------------" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Create Table CustomerDemographics"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{4E91BAC7-FDC7-4AB6-8B28-D6A14CA6C9D9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Create Table CustomerDemographics"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="SET ANSI_NULLS ON&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;-------------------------------------------------------------------&#xA;IF EXISTS (SELECT * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[CustomerDemographics]') AND type IN (N'U'))&#xA;DROP TABLE [dbo].[CustomerDemographics]&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[CustomerDemographics]&#xA;(&#xA;-- Columns Definition&#xA; [CustomerTypeID] nchar(10) NOT NULL &#xA;, [CustomerDesc] ntext &#xA;&#xA;-- Constraints&#xA;&#xA;)&#xA;ON &quot;default&quot;&#xA;WITH (DATA_COMPRESSION = NONE)&#xA;GO&#xA;&#xA;-------------------------------------------------------------------" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Create Table Customers"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{5869A9C6-FEA7-4D2C-A4BD-FCB8EB01EE34}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Create Table Customers"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="SET ANSI_NULLS ON&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;-------------------------------------------------------------------&#xA;IF EXISTS (SELECT * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Customers]') AND type IN (N'U'))&#xA;DROP TABLE [dbo].[Customers]&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[Customers]&#xA;(&#xA;-- Columns Definition&#xA; [CustomerID] nchar(5) NOT NULL &#xA;, [CompanyName] nvarchar(40) NOT NULL &#xA;, [ContactName] nvarchar(30) &#xA;, [ContactTitle] nvarchar(30) &#xA;, [Address] nvarchar(60) &#xA;, [City] nvarchar(15) &#xA;, [Region] nvarchar(15) &#xA;, [PostalCode] nvarchar(10) &#xA;, [Country] nvarchar(15) &#xA;, [Phone] nvarchar(24) &#xA;, [Fax] nvarchar(24) &#xA;&#xA;-- Constraints&#xA;&#xA;)&#xA;ON &quot;default&quot;&#xA;WITH (DATA_COMPRESSION = NONE)&#xA;GO&#xA;&#xA;-------------------------------------------------------------------" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Create Table Employees"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{829EADB6-9769-4CAA-B1C2-F99799BD5349}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Create Table Employees"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="SET ANSI_NULLS ON&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;-------------------------------------------------------------------&#xA;IF EXISTS (SELECT * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Employees]') AND type IN (N'U'))&#xA;DROP TABLE [dbo].[Employees]&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[Employees]&#xA;(&#xA;-- Columns Definition&#xA; [EmployeeID] int NOT NULL &#xA;, [LastName] nvarchar(20) NOT NULL &#xA;, [FirstName] nvarchar(10) NOT NULL &#xA;, [Title] nvarchar(30) &#xA;, [TitleOfCourtesy] nvarchar(25) &#xA;, [BirthDate] datetime &#xA;, [HireDate] datetime &#xA;, [Address] nvarchar(60) &#xA;, [City] nvarchar(15) &#xA;, [Region] nvarchar(15) &#xA;, [PostalCode] nvarchar(10) &#xA;, [Country] nvarchar(15) &#xA;, [HomePhone] nvarchar(24) &#xA;, [Extension] nvarchar(4) &#xA;, [Photo] image &#xA;, [Notes] ntext &#xA;, [ReportsTo] int &#xA;, [PhotoPath] nvarchar(255) &#xA;&#xA;-- Constraints&#xA;&#xA;)&#xA;ON &quot;default&quot;&#xA;WITH (DATA_COMPRESSION = NONE)&#xA;GO&#xA;&#xA;-------------------------------------------------------------------" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Create Table EmployeeTerritories"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{4071C65D-C83A-47C1-9DB4-03BDC84E8FCA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Create Table EmployeeTerritories"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="SET ANSI_NULLS ON&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;-------------------------------------------------------------------&#xA;IF EXISTS (SELECT * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[EmployeeTerritories]') AND type IN (N'U'))&#xA;DROP TABLE [dbo].[EmployeeTerritories]&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[EmployeeTerritories]&#xA;(&#xA;-- Columns Definition&#xA; [EmployeeID] int NOT NULL &#xA;, [TerritoryID] nvarchar(20) NOT NULL &#xA;&#xA;-- Constraints&#xA;&#xA;)&#xA;ON &quot;default&quot;&#xA;WITH (DATA_COMPRESSION = NONE)&#xA;GO&#xA;&#xA;-------------------------------------------------------------------" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Create Table Order Details"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{A954DE33-F7AD-4EBA-A829-110AF8983B52}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Create Table Order Details"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="SET ANSI_NULLS ON&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;-------------------------------------------------------------------&#xA;IF EXISTS (SELECT * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Order Details]') AND type IN (N'U'))&#xA;DROP TABLE [dbo].[Order Details]&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[Order Details]&#xA;(&#xA;-- Columns Definition&#xA; [OrderID] int NOT NULL &#xA;, [ProductID] int NOT NULL &#xA;, [UnitPrice] money NOT NULL &#xA;, [Quantity] smallint NOT NULL &#xA;, [Discount] real NOT NULL &#xA;&#xA;-- Constraints&#xA;&#xA;)&#xA;ON &quot;default&quot;&#xA;WITH (DATA_COMPRESSION = NONE)&#xA;GO&#xA;&#xA;-------------------------------------------------------------------" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Create Table Orders"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{42B48666-6BC3-48CD-88BE-C0868A63745D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Create Table Orders"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="SET ANSI_NULLS ON&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;-------------------------------------------------------------------&#xA;IF EXISTS (SELECT * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Orders]') AND type IN (N'U'))&#xA;DROP TABLE [dbo].[Orders]&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[Orders]&#xA;(&#xA;-- Columns Definition&#xA; [OrderID] int NOT NULL &#xA;, [CustomerID] nchar(5) &#xA;, [EmployeeID] int &#xA;, [OrderDate] datetime &#xA;, [RequiredDate] datetime &#xA;, [ShippedDate] datetime &#xA;, [ShipVia] int &#xA;, [Freight] money &#xA;, [ShipName] nvarchar(40) &#xA;, [ShipAddress] nvarchar(60) &#xA;, [ShipCity] nvarchar(15) &#xA;, [ShipRegion] nvarchar(15) &#xA;, [ShipPostalCode] nvarchar(10) &#xA;, [ShipCountry] nvarchar(15) &#xA;&#xA;-- Constraints&#xA;&#xA;)&#xA;ON &quot;default&quot;&#xA;WITH (DATA_COMPRESSION = NONE)&#xA;GO&#xA;&#xA;-------------------------------------------------------------------" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Create Table Products"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{4B430F4C-C901-4072-884A-66609BA89497}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Create Table Products"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="SET ANSI_NULLS ON&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;-------------------------------------------------------------------&#xA;IF EXISTS (SELECT * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Products]') AND type IN (N'U'))&#xA;DROP TABLE [dbo].[Products]&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[Products]&#xA;(&#xA;-- Columns Definition&#xA; [ProductID] int NOT NULL &#xA;, [ProductName] nvarchar(40) NOT NULL &#xA;, [SupplierID] int &#xA;, [CategoryID] int &#xA;, [QuantityPerUnit] nvarchar(20) &#xA;, [UnitPrice] money &#xA;, [UnitsInStock] smallint &#xA;, [UnitsOnOrder] smallint &#xA;, [ReorderLevel] smallint &#xA;, [Discontinued] bit NOT NULL &#xA;&#xA;-- Constraints&#xA;&#xA;)&#xA;ON &quot;default&quot;&#xA;WITH (DATA_COMPRESSION = NONE)&#xA;GO&#xA;&#xA;-------------------------------------------------------------------" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Create Table Region"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{3FDD8926-1E79-4C18-899F-1461E4566331}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Create Table Region"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="SET ANSI_NULLS ON&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;-------------------------------------------------------------------&#xA;IF EXISTS (SELECT * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Region]') AND type IN (N'U'))&#xA;DROP TABLE [dbo].[Region]&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[Region]&#xA;(&#xA;-- Columns Definition&#xA; [RegionID] int NOT NULL &#xA;, [RegionDescription] nchar(50) NOT NULL &#xA;&#xA;-- Constraints&#xA;&#xA;)&#xA;ON &quot;default&quot;&#xA;WITH (DATA_COMPRESSION = NONE)&#xA;GO&#xA;&#xA;-------------------------------------------------------------------" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Create Table Shippers"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{908AC98A-ED7B-4417-9BF9-75B559A06744}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Create Table Shippers"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="SET ANSI_NULLS ON&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;-------------------------------------------------------------------&#xA;IF EXISTS (SELECT * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Shippers]') AND type IN (N'U'))&#xA;DROP TABLE [dbo].[Shippers]&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[Shippers]&#xA;(&#xA;-- Columns Definition&#xA; [ShipperID] int NOT NULL &#xA;, [CompanyName] nvarchar(40) NOT NULL &#xA;, [Phone] nvarchar(24) &#xA;&#xA;-- Constraints&#xA;&#xA;)&#xA;ON &quot;default&quot;&#xA;WITH (DATA_COMPRESSION = NONE)&#xA;GO&#xA;&#xA;-------------------------------------------------------------------" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Create Table Suppliers"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{209F043A-30BB-498D-8EAD-7A234319AC09}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Create Table Suppliers"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="SET ANSI_NULLS ON&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;-------------------------------------------------------------------&#xA;IF EXISTS (SELECT * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Suppliers]') AND type IN (N'U'))&#xA;DROP TABLE [dbo].[Suppliers]&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[Suppliers]&#xA;(&#xA;-- Columns Definition&#xA; [SupplierID] int NOT NULL &#xA;, [CompanyName] nvarchar(40) NOT NULL &#xA;, [ContactName] nvarchar(30) &#xA;, [ContactTitle] nvarchar(30) &#xA;, [Address] nvarchar(60) &#xA;, [City] nvarchar(15) &#xA;, [Region] nvarchar(15) &#xA;, [PostalCode] nvarchar(10) &#xA;, [Country] nvarchar(15) &#xA;, [Phone] nvarchar(24) &#xA;, [Fax] nvarchar(24) &#xA;, [HomePage] ntext &#xA;&#xA;-- Constraints&#xA;&#xA;)&#xA;ON &quot;default&quot;&#xA;WITH (DATA_COMPRESSION = NONE)&#xA;GO&#xA;&#xA;-------------------------------------------------------------------" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Create Table Territories"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{3EF50117-328F-43D1-ABA1-BF4A0344523B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Create Table Territories"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="SET ANSI_NULLS ON&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;-------------------------------------------------------------------&#xA;IF EXISTS (SELECT * from sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Territories]') AND type IN (N'U'))&#xA;DROP TABLE [dbo].[Territories]&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[Territories]&#xA;(&#xA;-- Columns Definition&#xA; [TerritoryID] nvarchar(20) NOT NULL &#xA;, [TerritoryDescription] nchar(50) NOT NULL &#xA;, [RegionID] int NOT NULL &#xA;&#xA;-- Constraints&#xA;&#xA;)&#xA;ON &quot;default&quot;&#xA;WITH (DATA_COMPRESSION = NONE)&#xA;GO&#xA;&#xA;-------------------------------------------------------------------" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Create Table Categories_To_SQL - Create Table CustomerCustomerDemo]"
+      DTS:CreationName=""
+      DTS:DTSID="{9E78FA1A-AF60-429D-8255-CBAF165E52C0}"
+      DTS:From="Package\SQL - Create Table Categories"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Create Table Categories_To_SQL - Create Table CustomerCustomerDemo"
+      DTS:To="Package\SQL - Create Table CustomerCustomerDemo" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Create Table CustomerCustomerDemo_To_SQL - Create Table CustomerDemographics]"
+      DTS:CreationName=""
+      DTS:DTSID="{E4D6F278-D5B1-43F9-968A-4BAB6618C5D6}"
+      DTS:From="Package\SQL - Create Table CustomerCustomerDemo"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Create Table CustomerCustomerDemo_To_SQL - Create Table CustomerDemographics"
+      DTS:To="Package\SQL - Create Table CustomerDemographics" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Create Table CustomerDemographics_To_SQL - Create Table Customers]"
+      DTS:CreationName=""
+      DTS:DTSID="{19CF5367-9D2A-42F7-8DE3-020082BB1526}"
+      DTS:From="Package\SQL - Create Table CustomerDemographics"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Create Table CustomerDemographics_To_SQL - Create Table Customers"
+      DTS:To="Package\SQL - Create Table Customers" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Create Table Customers_To_SQL - Create Table Employees]"
+      DTS:CreationName=""
+      DTS:DTSID="{562388B6-4BBC-4FC0-949E-A949886A7915}"
+      DTS:From="Package\SQL - Create Table Customers"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Create Table Customers_To_SQL - Create Table Employees"
+      DTS:To="Package\SQL - Create Table Employees" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Create Table Employees_To_SQL - Create Table EmployeeTerritories]"
+      DTS:CreationName=""
+      DTS:DTSID="{38C8435B-FFDF-4D28-A443-E8AC392E3982}"
+      DTS:From="Package\SQL - Create Table Employees"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Create Table Employees_To_SQL - Create Table EmployeeTerritories"
+      DTS:To="Package\SQL - Create Table EmployeeTerritories" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Create Table EmployeeTerritories_To_SQL - Create Table Order Details]"
+      DTS:CreationName=""
+      DTS:DTSID="{87733361-44F0-4B45-9378-EF099507BB42}"
+      DTS:From="Package\SQL - Create Table EmployeeTerritories"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Create Table EmployeeTerritories_To_SQL - Create Table Order Details"
+      DTS:To="Package\SQL - Create Table Order Details" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Create Table Order Details_To_SQL - Create Table Orders]"
+      DTS:CreationName=""
+      DTS:DTSID="{8EB0651D-C0E7-42E1-9305-BC5A36D68256}"
+      DTS:From="Package\SQL - Create Table Order Details"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Create Table Order Details_To_SQL - Create Table Orders"
+      DTS:To="Package\SQL - Create Table Orders" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Create Table Orders_To_SQL - Create Table Products]"
+      DTS:CreationName=""
+      DTS:DTSID="{F75940AA-9353-46C3-B045-A293867C4591}"
+      DTS:From="Package\SQL - Create Table Orders"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Create Table Orders_To_SQL - Create Table Products"
+      DTS:To="Package\SQL - Create Table Products" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Create Table Products_To_SQL - Create Table Region]"
+      DTS:CreationName=""
+      DTS:DTSID="{FA785D5E-4546-4CB7-A17A-1263D8D05D76}"
+      DTS:From="Package\SQL - Create Table Products"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Create Table Products_To_SQL - Create Table Region"
+      DTS:To="Package\SQL - Create Table Region" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Create Table Region_To_SQL - Create Table Shippers]"
+      DTS:CreationName=""
+      DTS:DTSID="{255EE4AF-371A-460B-A3EE-B2BB15427CE6}"
+      DTS:From="Package\SQL - Create Table Region"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Create Table Region_To_SQL - Create Table Shippers"
+      DTS:To="Package\SQL - Create Table Shippers" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Create Table Shippers_To_SQL - Create Table Suppliers]"
+      DTS:CreationName=""
+      DTS:DTSID="{FCD9A9A8-AF9C-45B5-8A33-D23BF6581761}"
+      DTS:From="Package\SQL - Create Table Shippers"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Create Table Shippers_To_SQL - Create Table Suppliers"
+      DTS:To="Package\SQL - Create Table Suppliers" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Create Table Suppliers_To_SQL - Create Table Territories]"
+      DTS:CreationName=""
+      DTS:DTSID="{17B0D247-75E8-4308-A23C-A8F2D2A988B1}"
+      DTS:From="Package\SQL - Create Table Suppliers"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Create Table Suppliers_To_SQL - Create Table Territories"
+      DTS:To="Package\SQL - Create Table Territories" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

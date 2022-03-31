@@ -1,0 +1,26 @@
+﻿<#
+    /************************************************************************************************************
+                                    Begin Naming Standard Options
+    ************************************************************************************************************/
+    string oleDbSourcePrefix = "OLESRC - ";
+    string oleDbDestPrefix = "OLEDST - ";
+    string flatFileSourcePrefix = "FFSRC - ";
+    string sqlTaskPrefix = "SQL - ";
+    string dataFlowTaskPrefix = "DFT - ";
+    string executePackageTaskPrefix = "ExPkg - ";
+    
+    string projectParamPrefix = "pp_";
+    string packageParamPrefix = "p_";
+    string connStrParamSuffix = "_ConnectionString";
+    string oleDbConnectionPrefix = "";
+    string oleDbConnectionSuffix = "_OLEDB";
+    
+    string createTablePackagePrefix = "Create Table ";
+    string createTablesPackageName = "_Drop and Create Tables";
+    string loadTablePackagePrefix = "Load ";
+    string controllerPackagePrefix = "_Controller - ";
+
+    /************************************************************************************************************
+                                    End Naming Standard Options
+    ************************************************************************************************************/
+#>

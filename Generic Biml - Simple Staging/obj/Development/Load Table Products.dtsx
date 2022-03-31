@@ -1,0 +1,562 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/25/2019 9:33:56 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SQL2017DEMO"
+  DTS:CreatorName="Tim"
+  DTS:DTSID="{BB6DCD9F-0974-436C-A26C-AD5961F9C3E5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Load Table Products"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{76463C79-A1B7-4EBF-862E-E719CFB41265}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Load Products"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{CC5A4D4F-6CCB-4AF1-9645-F68DA3F58C9B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Load Products"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Load Products\OLEDST - Products"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="OLEDST - Products"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Products]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load Products\OLEDST - Products.Connections[OleDbConnection]"
+                  connectionManagerID="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[NorthwindStaging_OLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLESRC - Products_Output_OLEDST - Products">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[ProductID]"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].Columns[ProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="ProductName"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[ProductName]"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[ProductName]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].Columns[SupplierID]"
+                      cachedDataType="i4"
+                      cachedName="SupplierID"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[SupplierID]"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[SupplierID]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].Columns[CategoryID]"
+                      cachedDataType="i4"
+                      cachedName="CategoryID"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[CategoryID]"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[CategoryID]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].Columns[QuantityPerUnit]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="QuantityPerUnit"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[QuantityPerUnit]"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[QuantityPerUnit]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].Columns[UnitPrice]"
+                      cachedDataType="cy"
+                      cachedName="UnitPrice"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[UnitPrice]"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[UnitPrice]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].Columns[UnitsInStock]"
+                      cachedDataType="i2"
+                      cachedName="UnitsInStock"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[UnitsInStock]"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[UnitsInStock]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].Columns[UnitsOnOrder]"
+                      cachedDataType="i2"
+                      cachedName="UnitsOnOrder"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[UnitsOnOrder]"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[UnitsOnOrder]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].Columns[ReorderLevel]"
+                      cachedDataType="i2"
+                      cachedName="ReorderLevel"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[ReorderLevel]"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[ReorderLevel]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].Columns[Discontinued]"
+                      cachedDataType="bool"
+                      cachedName="Discontinued"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[Discontinued]"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[Discontinued]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="40"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[SupplierID]"
+                      dataType="i4"
+                      name="SupplierID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[CategoryID]"
+                      dataType="i4"
+                      name="CategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[QuantityPerUnit]"
+                      dataType="wstr"
+                      length="20"
+                      name="QuantityPerUnit" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[UnitPrice]"
+                      dataType="cy"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[UnitsInStock]"
+                      dataType="i2"
+                      name="UnitsInStock" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[UnitsOnOrder]"
+                      dataType="i2"
+                      name="UnitsOnOrder" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[ReorderLevel]"
+                      dataType="i2"
+                      name="ReorderLevel" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products].ExternalColumns[Discontinued]"
+                      dataType="bool"
+                      name="Discontinued" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load Products\OLEDST - Products.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Products\OLEDST - Products.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLEDST - Products.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Products\OLEDST - Products.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load Products\OLESRC - Products"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="OLESRC - Products"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [ProductID]
+,[ProductName]
+,[SupplierID]
+,[CategoryID]
+,[QuantityPerUnit]
+,[UnitPrice]
+,[UnitsInStock]
+,[UnitsOnOrder]
+,[ReorderLevel]
+,[Discontinued]
+FROM [dbo].[Products]
+</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load Products\OLESRC - Products.Connections[OleDbConnection]"
+                  connectionManagerID="{11940E74-AEC7-11B1-7C97-C83A268A201E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Northwind_OLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[ProductID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[ProductID]"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[ProductName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[ProductName]"
+                      length="40"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[ProductName]"
+                      name="ProductName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[SupplierID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[SupplierID]"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[SupplierID]"
+                      name="SupplierID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[CategoryID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[CategoryID]"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[CategoryID]"
+                      name="CategoryID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[QuantityPerUnit]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[QuantityPerUnit]"
+                      length="20"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[QuantityPerUnit]"
+                      name="QuantityPerUnit"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[UnitPrice]"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[UnitsInStock]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[UnitsInStock]"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[UnitsInStock]"
+                      name="UnitsInStock"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[UnitsOnOrder]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[UnitsOnOrder]"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[UnitsOnOrder]"
+                      name="UnitsOnOrder"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[ReorderLevel]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[ReorderLevel]"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[ReorderLevel]"
+                      name="ReorderLevel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[Discontinued]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[Discontinued]"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].Columns[Discontinued]"
+                      name="Discontinued"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="40"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[SupplierID]"
+                      dataType="i4"
+                      name="SupplierID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[CategoryID]"
+                      dataType="i4"
+                      name="CategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[QuantityPerUnit]"
+                      dataType="wstr"
+                      length="20"
+                      name="QuantityPerUnit" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[UnitPrice]"
+                      dataType="cy"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[UnitsInStock]"
+                      dataType="i2"
+                      name="UnitsInStock" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[UnitsOnOrder]"
+                      dataType="i2"
+                      name="UnitsOnOrder" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[ReorderLevel]"
+                      dataType="i2"
+                      name="ReorderLevel" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output].ExternalColumns[Discontinued]"
+                      dataType="bool"
+                      name="Discontinued" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[ProductName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[ProductName]"
+                      name="ProductName" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[SupplierID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[SupplierID]"
+                      name="SupplierID" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[CategoryID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[CategoryID]"
+                      name="CategoryID" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[QuantityPerUnit]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[QuantityPerUnit]"
+                      name="QuantityPerUnit" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[UnitPrice]"
+                      dataType="cy"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[UnitPrice]"
+                      name="UnitPrice" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[UnitsInStock]"
+                      dataType="i2"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[UnitsInStock]"
+                      name="UnitsInStock" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[UnitsOnOrder]"
+                      dataType="i2"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[UnitsOnOrder]"
+                      name="UnitsOnOrder" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[ReorderLevel]"
+                      dataType="i2"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[ReorderLevel]"
+                      name="ReorderLevel" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[Discontinued]"
+                      dataType="bool"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[Discontinued]"
+                      name="Discontinued" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load Products\OLESRC - Products.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Load Products.Paths[OLESRC - Products_Output_OLEDST - Products]"
+              endId="Package\DFT - Load Products\OLEDST - Products.Inputs[OLESRC - Products_Output_OLEDST - Products]"
+              name="OLESRC - Products_Output_OLEDST - Products"
+              startId="Package\DFT - Load Products\OLESRC - Products.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate Products"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{7A91A3D4-D871-4231-A953-290DB6CF1BC1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate Products"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C388EBD3-3B0E-54B4-2C3C-A727ECE12EFD}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[Products]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Truncate Products_To_DFT - Load Products]"
+      DTS:CreationName=""
+      DTS:DTSID="{BCCC766B-508C-41A3-A5B7-F77D0809DF2F}"
+      DTS:From="Package\SQL - Truncate Products"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Truncate Products_To_DFT - Load Products"
+      DTS:To="Package\DFT - Load Products" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>
